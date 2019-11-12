@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,700&display=swap');
+
+h1, p {
+  font-family: Lato;
+}
+
+body, html {
+  margin: 0;
+  background-color: whitesmoke;
+  font-family: 'Dosis', sans-serif;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  color: white;
+  justify-content: space-between;
+}
+
+li {
+  margin-right: 2em;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  min-height: 10vh;
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+  box-sizing: border-box;
+}
+
+.login {
+  width: 50vw;
+  padding: 8px;
+  margin: 16px auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login > h3 {
+  text-align: center;
+}
+
+.login > input {
+  border-radius: 4px;
+  padding: 8px;
+  margin: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.main-button {
+  border-radius: 4px;
+  padding: 8px;
+  margin: 8px;
+  border: none;
+  color: white;
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+}
+
+.secondary-button {
+  border-radius: 4px;
+  padding: 8px;
+  margin: 8px;
+  border: 1px solid #13547a;
+  text-align: center;
+  color: #13547a;
+  background-color: transparent;
+}

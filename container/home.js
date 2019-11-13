@@ -16,17 +16,23 @@ const Home = () => {
         setData(parsedData.results);
       }
     };
-    fetchJson()
+    fetchJson();
   }, []);
 
   return (
     <>
-      {data.map((item, key) => (
-        <div className="list">
-          <h3>{item.title}</h3>
-          <small className="list-overview">{item.overview}</small>
-        </div>
-      ))}
+      {isLoggedIn ? (
+        <>
+          {data.map((item, key) => (
+            <div className="list">
+              <h3>{item.title}</h3>
+              <small className="list-overview">{item.overview}</small>
+            </div>
+          ))}
+        </>
+      ): <>
+        <h1>You're not logged in</h1>
+      </>}
     </>
   );
 };

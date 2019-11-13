@@ -1,21 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import allReducers from "./reducer/index";
 import Login from "./login";
 import Home from "./container/home";
-import Register from './register';
+import Register from "./register";
 import "./style.css";
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: "React"
-    };
-  }
+let store = createStore(
+  allReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
-  render() {
-    return (
+const App = () => {
+  return (
+    <Provider store={store}>
       <Router>
         <nav>
           <ul>
@@ -35,8 +36,7 @@ class App extends Component {
         </nav>
         <main>
           <Switch>
-            <Route path="/register" component={Register}>
-            </Route>
+            <Route path="/register" component={Register} />
             <Route path="/about">
               <h2>About</h2>
             </Route>
@@ -52,8 +52,8 @@ class App extends Component {
           </Switch>
         </main>
       </Router>
-    );
-  }
-}
+    </Provider>
+  );
+};
 
 render(<App />, document.getElementById("root"));

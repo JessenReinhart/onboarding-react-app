@@ -3,8 +3,7 @@ import { render } from "react-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
-import { doLogin, setUserData } from "./reducer/actions";
-import "./style.css";
+import { doLogin, setUserData } from "../reducer/actions";
 
 const Login = ({ history }) => {
   const [loginparam, setLoginparam] = useState({

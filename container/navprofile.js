@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { doLogout } from "./reducer/actions";
+import { doLogout } from "../reducer/actions";
 import Swal from "sweetalert2";
 
 const Navprofile = () => {

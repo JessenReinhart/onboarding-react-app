@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Swal from "sweetalert2";
-import emailIsValid from "./facade";
+import emailIsValid from "../utils/facade";
 
 export default class Register extends Component {
   constructor() {

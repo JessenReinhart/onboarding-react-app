@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { createStore } from "redux";
 import { Provider, useSelector } from "react-redux";
 import allReducers from "./reducer/index";
-import Login from "./login";
+import Login from "./container/login";
 import Home from "./container/home";
-import Register from "./register";
-import Navprofile from "./navprofile";
+import Navprofile from "./container/navprofile";
+import Register from "./component/register";
 import Edituser from './container/edituser'
 import "./style.css";
 

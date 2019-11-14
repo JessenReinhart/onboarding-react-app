@@ -7,24 +7,27 @@ const loggedReducer = (state = false, action) => {
     case "SIGN_OUT":
       return false;
     default:
-      return state
+      return state;
   }
 };
 
-const counterReducer = (state = 0, action) => {
+const accountReducer = (
+  state = {
+    username: ""
+  },
+  action
+) => {
   switch (action.type) {
-    case "INCREMENT":
-      return state + 1;
-    case "DECREMENT":
-      return state - 1;
-    default: 
-      return state
+    case "SIGNED_IN":
+      return action.payload;
+    default:
+      return state;
   }
 };
 
 const allReducers = combineReducers({
   logged: loggedReducer,
-  counter: counterReducer
-})
+  account: accountReducer
+});
 
 export default allReducers;

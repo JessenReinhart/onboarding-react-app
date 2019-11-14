@@ -20,7 +20,9 @@ const Navprofile = () => {
     }).then(result => {
       if (result.value) {
         dispatch(doLogout());
-        Swal.fire("Sampai jumpa!", "Anda telah keluar", "success");
+        Swal.fire("Sampai jumpa!", "Anda telah keluar", "success").then(() => {
+          window.location.href = "#";
+        });
       }
     });
   };

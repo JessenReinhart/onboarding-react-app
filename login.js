@@ -30,7 +30,7 @@ const Login = ({ history }) => {
 
       if (userDataFilter.length) {
         dispatch(doLogin());
-        dispatch(setUserData({ username: loginparam.username }));
+        dispatch(setUserData(userDataFilter[0]));
         let timerInterval;
         Swal.fire({
           title: "Berhasil!",

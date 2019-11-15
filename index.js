@@ -53,7 +53,9 @@ const App = () => {
         <Switch>
           <Route path="/register" component={Register} />
           <Route path="/about">
-            <h2>About</h2>
+            <div className="list">
+              <h3>A simple web app for onboarding</h3>
+            </div>
           </Route>
           <Route path="/users" component={Users} />
           <Route path="/details/:id" component={Detailpage} />

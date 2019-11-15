@@ -2,22 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentData, setMovieList } from "../reducer/actions";
 
-// const Popup = ({ item, togglePopup }) => {
-//   return (
-//     <div className="popup-background">
-//       <div className="modal">
-//         <img
-//           src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
-//           alt=""
-//         />
-//         <h3>{item.title}</h3>
-//         <small>{item.overview}</small>
-//         <button className="main-button" onClick={togglePopup}>Close</button>
-//       </div>
-//     </div>
-//   );
-// };
-
 const Home = ({history}) => {
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
@@ -61,7 +45,6 @@ const Home = ({history}) => {
               <small className="list-overview">{item.overview}</small>
             </div>
           ))}
-          // {isPop && <Popup item={currentItem} togglePopup={closePopup} />}
         </>
       ) : (
         <>

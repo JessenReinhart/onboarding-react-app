@@ -66,6 +66,7 @@ const Edituser = ({ history }) => {
       password: userparam.newPass
     } //Create the new edited user account data object.
 
+    localStorage.setItem("loginData", JSON.stringify(newAccountData))
     newList.push(newAccountData) //Push the new data into the account list array
 
     dispatch(setUserData(newAccountData)) //Set the new account data to redux store

@@ -208,3 +208,21 @@ nav {
   display: flex;
   flex-direction: column;
 }
+
+.details > h5, .details > h3 {
+  margin: 0;
+}
+
+.overview {
+  margin-top: 10px;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: white;
+  z-index: 9999;
+}

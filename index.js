@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { createStore } from "redux";
-import { Provider, useSelector } from "react-redux";
+import { Provider, useSelector, useDispatch } from "react-redux";
 import allReducers from "./reducer/index";
 import Login from "./container/login";
 import Home from "./container/home";
 import Navprofile from "./container/navprofile";
 import Register from "./component/register";
-import Edituser from './container/edituser'
+import Edituser from "./container/edituser";
+import Detailpage from "./container/detail";
+import {setUserData, doLogin} from './reducer/actions'
 import "./style.css";
 
 let store = createStore(
@@ -18,6 +20,15 @@ let store = createStore(
 
 const App = () => {
   const isLoggedIn = useSelector(state => state.logged);
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if(localStorage.isLoggedIn) {
+      dispatch(doLogin())
+      const userData = JSON.parse(localStorage.loginData)
+      dispatch(setUserData(userData))
+    }
+  })
 
   return (
     <Router>
@@ -33,11 +44,7 @@ const App = () => {
             <Link to="/users">Users</Link>
           </li>
           <li>
-            {isLoggedIn ? (
-              <Navprofile />
-            ) : (
-              <Link to="/login">Login</Link>
-            )}
+            {isLoggedIn ? <Navprofile /> : <Link to="/login">Login</Link>}
           </li>
         </ul>
       </nav>
@@ -50,6 +57,7 @@ const App = () => {
           <Route path="/users">
             <h2>Users</h2>
           </Route>
+          <Route path="/details/:id" component={Detailpage} />
           <Route path="/login" component={Login} />
           <Route path="/edituser" component={Edituser} />
           <Route path="/" exact component={Home} />

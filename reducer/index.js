@@ -25,9 +25,29 @@ const accountReducer = (
   }
 };
 
+const listData = (state = {}, action) => {
+  switch (action.type) {
+    case "SET_LIST":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const movieData = (state = {}, action) => {
+  switch (action.type) {
+    case "SET_DATA":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 const allReducers = combineReducers({
   logged: loggedReducer,
-  account: accountReducer
+  account: accountReducer,
+  movieData,
+  listData
 });
 
 export default allReducers;

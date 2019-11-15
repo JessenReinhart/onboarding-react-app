@@ -1,38 +1,73 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setCurrentData, setMovieList } from "../reducer/actions";
 
-const Home = () => {
+// const Popup = ({ item, togglePopup }) => {
+//   return (
+//     <div className="popup-background">
+//       <div className="modal">
+//         <img
+//           src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
+//           alt=""
+//         />
+//         <h3>{item.title}</h3>
+//         <small>{item.overview}</small>
+//         <button className="main-button" onClick={togglePopup}>Close</button>
+//       </div>
+//     </div>
+//   );
+// };
+
+const Home = ({history}) => {
+  const dispatch = useDispatch();
   const [data, setData] = useState([]);
+  const [isPop, togglePop] = useState(false);
   const isLoggedIn = useSelector(state => state.logged);
+  const [currentItem, setCurrent] = useState({});
 
   useEffect(() => {
     const fetchJson = async () => {
-      if (isLoggedIn) {
+      if (localStorage.isLoggedIn) {
         const response = await fetch(
           "https://api.themoviedb.org/3/discover/movie?api_key=1967171a7fb0f71db60ca6c465e05f1d&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1"
         );
         let parsedData = await response.json();
-
+        dispatch(setMovieList(parsedData.results))
         setData(parsedData.results);
       }
     };
     fetchJson();
-  }, []);
+  },);
+
+  const closePopup = () => {
+    togglePop(false);
+  };
+
+  const checkKey = e => {
+    const index = e.target.id;
+    const itemId = data[index].id
+    history.push(`/details/${itemId}`)
+  };
 
   return (
     <>
       {isLoggedIn ? (
         <>
           {data.map((item, key) => (
-            <div className="list">
-              <h3>{item.title}</h3>
+            <div className="list" key={key}>
+              <h3 onClick={checkKey} id={key}>
+                {item.title}
+              </h3>
               <small className="list-overview">{item.overview}</small>
             </div>
           ))}
+          // {isPop && <Popup item={currentItem} togglePopup={closePopup} />}
         </>
-      ): <>
-        <h1>You're not logged in</h1>
-      </>}
+      ) : (
+        <>
+          <h1>You're not logged in</h1>
+        </>
+      )}
     </>
   );
 };

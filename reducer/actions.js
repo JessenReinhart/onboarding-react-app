@@ -16,3 +16,17 @@ export const setUserData = (data) => {
     payload: data
   }
 }
+
+export const setMovieList = (data) => {
+  return {
+    type: 'SET_LIST',
+    payload: data
+  }
+}
+
+export const setCurrentData = (data) => {
+  return {
+    type: 'SET_DATA',
+    payload: data
+  }
+}

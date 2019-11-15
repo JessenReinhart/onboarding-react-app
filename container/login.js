@@ -27,8 +27,10 @@ const Login = ({ history }) => {
         ); //Return the user data which contains the same username and password as the login param.
       }
 
-      if (userDataFilter.length) {
+      if (userDataFilter && userDataFilter.length) {
         dispatch(doLogin());
+        localStorage.setItem('loginData', JSON.stringify(userDataFilter[0]))
+        localStorage.setItem('isLoggedIn', true)
         dispatch(setUserData(userDataFilter[0]));
         let timerInterval;
         Swal.fire({
@@ -82,6 +84,7 @@ const Login = ({ history }) => {
       <Link to="/register" className="secondary-button">
         Register
       </Link>
+      <span className="forgot-password">Saya lupa passwordnya hehe</span>
     </div>
   );
 };

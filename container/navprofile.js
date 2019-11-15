@@ -20,6 +20,7 @@ const Navprofile = () => {
     }).then(result => {
       if (result.value) {
         dispatch(doLogout());
+        localStorage.removeItem("isLoggedIn")
         Swal.fire("Sampai jumpa!", "Anda telah keluar", "success").then(() => {
           window.location.href = "#";
         });
